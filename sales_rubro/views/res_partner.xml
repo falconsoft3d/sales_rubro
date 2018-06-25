@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="partner_rubro_form_view">
+            <field name="name">res.partner.form..rubro.inherited</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="email" position="after">
+                    <field name="rubro" />
+                    <field name="rubro_hijo" attrs="{'invisible': [('rubro','==',False)]}" domain="[('padre','=',rubro)]"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_res_rubro_tree_view">
+            <field name="name">Partners</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <field name="email" position="after">
+                    <field name="rubro" />
+                    <field name="rubro_hijo" />
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

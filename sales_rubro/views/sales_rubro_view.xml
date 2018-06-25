@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <odoo>
+    <data>
+    <record id="view_form_sales_rubro" model="ir.ui.view">
+             <field name="name">view.form.sales.rubro</field>
+             <field name="model">sales.rubro</field>
+             <field name="arch" type="xml">
+                <form string="Listado de Rubros">
+                  <sheet>
+                    <legend>Rubros</legend>
+                       <group>
+                          <group>
+                              <field name="cod" />
+                              <field name="name" required="True"/>
+                              <field name="padre" />
+                              <field name="desc" />
+                          </group>
+                       </group>
+                   </sheet>
+                </form>
+            </field>
+    </record>
+
+    <record id="view_tree_sales_rubro" model="ir.ui.view">
+             <field name="name">view.tree.sales.rubro</field>
+             <field name="model">sales.rubro</field>
+             <field name="arch" type="xml">
+                <tree>
+                    <field name="cod" />
+                    <field name="name"/>
+                    <field name="padre" />
+                    <field name="desc"/>
+                </tree>
+            </field>
+    </record>
+
+    <record id="action_sales_rubro" model="ir.actions.act_window">
+            <field name="name">Rubros</field>
+            <field name="res_model">sales.rubro</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Presione para crear nuevo Registro</p>
+           </field>
+    </record>
+
+    <menuitem id="rubro_menu_parent" groups="sales_team.group_sale_manager"
+        name="Rubros"
+        parent="sales_team.menu_sales"
+        sequence="33" />
+
+    <menuitem id="rubro_menu"
+        name="Rubros"
+        parent="rubro_menu_parent"
+        sequence="33"
+        action="action_sales_rubro" />
+
+     </data>
+</odoo>
